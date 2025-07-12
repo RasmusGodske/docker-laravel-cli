@@ -9,14 +9,18 @@ if [ "$#" -eq 0 ]; then
     echo "This container provides Laravel CLI in a containerized environment."
     echo ""
     echo "Usage examples:"
-    echo "  docker run -v \$(pwd):/workspace laravel-bootstrap new my-app"
-    echo "  docker run -v \$(pwd):/workspace laravel-bootstrap new my-app --using=rasmusgodske/laravel-sail-vue-starterkit"
-    echo "  docker run -v \$(pwd):/workspace laravel-bootstrap --help"
+    echo "  docker run -v \$(pwd):/workspace docker-laravel-cli laravel new my-app"
+    echo "  docker run -v \$(pwd):/workspace docker-laravel-cli laravel new my-app --using=your-username/your-starter-kit"
+    echo "  docker run -v \$(pwd):/workspace docker-laravel-cli laravel --help"
     echo ""
     exit 1
 fi
 
-echo "Running: laravel $*"
+echo "Running: $*"
 echo ""
 
-laravel "$@"
+exec "$@"
+
+if [ -n "$USER_ID" ] && [ -n "$GROUP_ID" ]; then
+    chown -R $USER_ID:$GROUP_ID /workspace/*
+fi
