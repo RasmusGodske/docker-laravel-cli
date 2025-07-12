@@ -19,8 +19,9 @@ fi
 echo "Running: $*"
 echo ""
 
-exec "$@"
+"$@"
 
 if [ -n "$USER_ID" ] && [ -n "$GROUP_ID" ]; then
+    echo "Fixing file ownership..."
     chown -R $USER_ID:$GROUP_ID /workspace/*
 fi
