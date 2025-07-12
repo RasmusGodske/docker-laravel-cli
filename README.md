@@ -29,3 +29,10 @@ docker run -it -v $(pwd):/workspace docker-laravel-cli laravel new my-app --usin
 docker run -it -v $(pwd):/workspace docker-laravel-cli laravel --help
 docker run -it -v $(pwd):/workspace docker-laravel-cli laravel new my-app --git
 ```
+
+### File Ownership
+By default, files are created as root. To create files with your user ownership, use the USER_ID and GROUP_ID environment variables:
+
+```bash
+docker run -it -v $(pwd):/workspace -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) godske/docker-laravel-cli laravel new my-app
+```
