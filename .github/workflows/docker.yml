@@ -11,7 +11,7 @@ on:
       - main
 
 env:
-  DOCKER_IMAGE: rasmusgodske/docker-laravel-cli
+  DOCKER_IMAGE: godske/docker-laravel-cli
 
 jobs:
   build-and-push:

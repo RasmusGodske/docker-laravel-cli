@@ -6,7 +6,7 @@ A Docker container that provides the Laravel CLI without requiring local PHP/Com
 
 ### Using the pre-built image (recommended)
 ```bash
-docker run -it -v $(pwd):/workspace --user $(id -u):$(id -g) rasmusgodske/docker-laravel-cli new my-app
+docker run -it -v $(pwd):/workspace --user $(id -u):$(id -g) godske/docker-laravel-cli new my-app
 ```
 
 ### Build the image locally
